@@ -1030,8 +1030,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2529654124240280188, guid: c010f9cf65bdf2d43b0044945d5dece0,
         type: 3}
+      propertyPath: TargetTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529654124240280188, guid: c010f9cf65bdf2d43b0044945d5dece0,
+        type: 3}
       propertyPath: bulletSpeed
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529654124240280188, guid: c010f9cf65bdf2d43b0044945d5dece0,
+        type: 3}
+      propertyPath: movementSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529654124240280188, guid: c010f9cf65bdf2d43b0044945d5dece0,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 2905785940190579609, guid: c010f9cf65bdf2d43b0044945d5dece0,
         type: 3}

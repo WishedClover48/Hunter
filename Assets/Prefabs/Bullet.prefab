@@ -119,6 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5685633ae8c5e40a8f95f4a5d2553a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smoke: {fileID: 7592990924729341258, guid: 17f248bb183dca34e90e1a99900e6717, type: 3}
+  Rigidbody: {fileID: -5940730853299298612}
   damage: 1
 --- !u!54 &-5940730853299298612
 Rigidbody:

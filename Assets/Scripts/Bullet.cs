@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour, IDamager
 {
+    [SerializeField] public ParticleSystem smoke;
+    [SerializeField] public Rigidbody Rigidbody;
+
     public int damage = 1;
 
     private void OnCollisionEnter(Collision other)
@@ -19,5 +22,10 @@ public class Bullet : MonoBehaviour, IDamager
     public void DealDamage(IDamageable damageable)
     {
         damageable.TakeDamage(damage);
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(smoke, transform.position, Quaternion.Euler(transform.rotation*transform.forward));
     }
 }
