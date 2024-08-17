@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerActions : MonoBehaviour, ITimer
 {
     [SerializeField] private float movementSpeed;
     [SerializeField] private float rotationSpeed;
-    [SerializeField] private Rigidbody playerRB;
+     private Rigidbody playerRB;
     [SerializeField] private Rigidbody bullet;
-    [SerializeField] private float bulletSpeed;
     [SerializeField] public float TargetTime;
+    [SerializeField] public GameObject myself;
     public float Timer
     {
         get
@@ -24,19 +25,26 @@ public class PlayerActions : MonoBehaviour, ITimer
     private float timer = 0f;
     Vector3 wantedPosition;
     Quaternion wantedRotation;
+    ShootingPattern Shooting = new ShootingPattern();
 
+    private void Start()
+    {
+        playerRB = myself.GetComponent<Rigidbody>();
+    }
     private void Update()
     {
         if(timer < 0) 
         { 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                StraightBullet();
+                Shooting.shoot = ShootingPattern.Shot.Straight;
+                Shooting.UseShot(myself, bullet);
                 StartTimer();
             }
             else if (Input.GetKeyDown(KeyCode.LeftControl))
             {
-                CurveBullet();
+                Shooting.shoot = ShootingPattern.Shot.Parabolic;
+                Shooting.UseShot(myself, bullet);
                 StartTimer();
             }
         }
@@ -44,6 +52,7 @@ public class PlayerActions : MonoBehaviour, ITimer
         {
             Timer -= Time.deltaTime;
         }
+
     }
     void FixedUpdate()
     {
@@ -70,24 +79,8 @@ public class PlayerActions : MonoBehaviour, ITimer
         playerRB.MoveRotation(wantedRotation);
     }
 
-    //Creates a bullet and sends it straight ahead.
-    void StraightBullet()
-    {
-        Rigidbody bulletClone = Instantiate(bullet, transform.position + (transform.rotation * new Vector3(0, 2, 3)), transform.rotation);
-        bulletClone.velocity = transform.forward * bulletSpeed;
-    }
-
-    //Creates a bullet and adds an angle to its velocity, it also enables its gravity.
-    void CurveBullet()
-    {
-        Rigidbody bulletClone = Instantiate(bullet, transform.position + (transform.rotation * new Vector3(0, 2, 3)), transform.rotation);
-        bulletClone.useGravity = true;
-        bulletClone.velocity = new Vector3(0, 15, 0) + (transform.forward/8) * bulletSpeed;
-    }
-
     public void StartTimer()
     {
         Timer = TargetTime;
     }
-
 }

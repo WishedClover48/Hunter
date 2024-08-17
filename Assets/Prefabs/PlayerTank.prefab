@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 1382445463413467600}
   - component: {fileID: 2529654124240280188}
   - component: {fileID: 2287876608815776550}
-  - component: {fileID: 1484717713749412977}
+  - component: {fileID: 3295774754600658732}
   m_Layer: 0
   m_Name: PlayerTank
   m_TagString: Untagged
@@ -111,7 +111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6373082909021629715}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.25, y: 1.2, z: -13.52}
   m_LocalScale: {x: 0.0079534855, y: 0.0079534855, z: 0.0079534855}
   m_ConstrainProportionsScale: 0
@@ -158,8 +158,9 @@ MonoBehaviour:
   rotationSpeed: 40
   playerRB: {fileID: 2287876608815776550}
   bullet: {fileID: -5940730853299298612, guid: b8df17e67cf4a7d458523abdcc82c7ce, type: 3}
-  bulletSpeed: 35
-  TargetTime: 0
+  TargetTime: 1
+  myself: {fileID: 6373082909021629715}
+  Scope: {fileID: 0}
 --- !u!54 &2287876608815776550
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -187,7 +188,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1484717713749412977
+--- !u!114 &3295774754600658732
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,10 +197,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6373082909021629715}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c182c1f0bd7f86e4390daef181e5fb04, type: 3}
+  m_Script: {fileID: 11500000, guid: 076773d9b75fde1429c24edb5a27bc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
+  numOfTanks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  tank: {fileID: 21300000, guid: 48ee561bf73afcc4db210a15c28a17c5, type: 3}
 --- !u!1 &8122965121943801013
 GameObject:
   m_ObjectHideFlags: 0

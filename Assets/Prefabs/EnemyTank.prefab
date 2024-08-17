@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
+  TargetTime: 3
 --- !u!1 &8196585668697823440
 GameObject:
   m_ObjectHideFlags: 0
