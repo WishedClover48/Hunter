@@ -4,22 +4,8 @@ using UnityEngine;
 
 public class ShootingPattern
 {
-    public enum Shot { Straight, Parabolic }
-    StraightBullet StraightBullet = new StraightBullet();
-    CurveBullet CurveBullet = new CurveBullet();
-    public Shot shoot = Shot.Straight;
-    public void UseShot( GameObject shooter, Rigidbody bullet)
+    public void UseShot( GameObject shooter, Rigidbody bullet, IShot strategy)
     {
-        switch (shoot)
-        {
-            case Shot.Straight:
-                StraightBullet.Shooting(shooter, bullet);
-                break;
-            case Shot.Parabolic:
-                CurveBullet.Shooting(shooter, bullet);
-                break;
-            default:
-                break;
-        }
+        strategy.Shooting(shooter, bullet);
     }
 }

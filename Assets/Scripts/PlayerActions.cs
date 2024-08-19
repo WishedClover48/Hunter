@@ -26,6 +26,8 @@ public class PlayerActions : MonoBehaviour, ITimer
     Vector3 wantedPosition;
     Quaternion wantedRotation;
     ShootingPattern Shooting = new ShootingPattern();
+    StraightBullet StraightBullet = new StraightBullet();
+    CurveBullet CurveBullet = new CurveBullet();
 
     private void Start()
     {
@@ -37,14 +39,12 @@ public class PlayerActions : MonoBehaviour, ITimer
         { 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Shooting.shoot = ShootingPattern.Shot.Straight;
-                Shooting.UseShot(myself, bullet);
+                Shooting.UseShot(myself, bullet, StraightBullet);
                 StartTimer();
             }
             else if (Input.GetKeyDown(KeyCode.LeftControl))
             {
-                Shooting.shoot = ShootingPattern.Shot.Parabolic;
-                Shooting.UseShot(myself, bullet);
+                Shooting.UseShot(myself, bullet, CurveBullet);
                 StartTimer();
             }
         }
