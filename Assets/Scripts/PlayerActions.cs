@@ -29,12 +29,13 @@ public class PlayerActions : MonoBehaviour, ITimer
     Quaternion wantedRotation;
     ShootingPattern Shooting = new ShootingPattern();
     IShot mainShotMode;
-    IShot secondaryShotMode;
+    IShot backupShotMode;
+    IShot auxShotMode;
 
     private void Start()
     {
         mainShotMode = new StraightBullet();
-        secondaryShotMode = new CurveBullet();
+        backupShotMode = new CurveBullet();
         usingMainShot = true;
         gameManager = GameManager.Instance;
         playerRB = myself.GetComponent<Rigidbody>();
@@ -45,19 +46,16 @@ public class PlayerActions : MonoBehaviour, ITimer
         { 
             if (Input.GetKeyDown(KeyCode.Space) && gameManager.GetState() == GameManager.gameState.MainWorld)
             {
-                if (usingMainShot) 
-                { 
-                    Shooting.UseShot(myself, bullet, mainShotMode);
-                }
-                else
-                {
-                    Shooting.UseShot(myself, bullet, secondaryShotMode);
-                }
+                Shooting.UseShot(myself, bullet, mainShotMode);
                 StartTimer();
             }
             else if (Input.GetKeyDown(KeyCode.LeftControl))
             {
                 usingMainShot = !usingMainShot;
+                auxShotMode = mainShotMode;
+                mainShotMode = backupShotMode;
+                backupShotMode = auxShotMode;
+
             }
         }
         else
@@ -65,26 +63,38 @@ public class PlayerActions : MonoBehaviour, ITimer
             Timer -= Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.Backspace))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             gameManager.SwitchState(GameManager.gameState.BattleGamemode);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            gameManager.SwitchState(GameManager.gameState.MainWorld);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            gameManager.SwitchState(GameManager.gameState.MenuPrincipal);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            gameManager.SwitchState(GameManager.gameState.Pause);
         }
     }
     void FixedUpdate()
     {
         //Controls the movement
-        if (timer < 0) 
+        if (timer < 0 && gameManager.GetState() == GameManager.gameState.MainWorld) 
         { 
             wantedPosition = transform.position + transform.forward * Input.GetAxisRaw("Vertical") * movementSpeed * Time.deltaTime;
             playerRB.MovePosition(wantedPosition);
         }
 
         //Controls the rotation
-        if (Input.GetAxisRaw("Vertical") <= 0.4 && Input.GetAxisRaw("Vertical") >= -0.4 && timer < 0) 
+        if (Input.GetAxisRaw("Vertical") <= 0.4 && Input.GetAxisRaw("Vertical") >= -0.4 && timer < 0 && gameManager.GetState() == GameManager.gameState.MainWorld) 
         { 
             wantedRotation = transform.rotation * Quaternion.Euler(Vector3.up * Input.GetAxisRaw("Horizontal") * rotationSpeed * Time.deltaTime );
         }
-        else if(timer < 0)
+        else if(timer < 0 && gameManager.GetState() == GameManager.gameState.MainWorld)
         {
             wantedRotation = transform.rotation * Quaternion.Euler(Vector3.up * Input.GetAxisRaw("Horizontal") * (rotationSpeed/2) * Time.deltaTime);
         }
