@@ -7,10 +7,11 @@ public class PlayerActions : MonoBehaviour, ITimer
 {
     [SerializeField] private float movementSpeed;
     [SerializeField] private float rotationSpeed;
-     private Rigidbody playerRB;
     [SerializeField] private Rigidbody bullet;
     [SerializeField] public float TargetTime;
     [SerializeField] public GameObject myself;
+    private Rigidbody playerRB;
+    private bool usingMainShot;
     public float Timer
     {
         get
@@ -23,29 +24,40 @@ public class PlayerActions : MonoBehaviour, ITimer
         }
     }
     private float timer = 0f;
+    private GameManager gameManager;
     Vector3 wantedPosition;
     Quaternion wantedRotation;
     ShootingPattern Shooting = new ShootingPattern();
-    StraightBullet StraightBullet = new StraightBullet();
-    CurveBullet CurveBullet = new CurveBullet();
+    IShot mainShotMode;
+    IShot secondaryShotMode;
 
     private void Start()
     {
+        mainShotMode = new StraightBullet();
+        secondaryShotMode = new CurveBullet();
+        usingMainShot = true;
+        gameManager = GameManager.Instance;
         playerRB = myself.GetComponent<Rigidbody>();
     }
     private void Update()
     {
         if(timer < 0) 
         { 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && gameManager.GetState() == GameManager.gameState.MainWorld)
             {
-                Shooting.UseShot(myself, bullet, StraightBullet);
+                if (usingMainShot) 
+                { 
+                    Shooting.UseShot(myself, bullet, mainShotMode);
+                }
+                else
+                {
+                    Shooting.UseShot(myself, bullet, secondaryShotMode);
+                }
                 StartTimer();
             }
             else if (Input.GetKeyDown(KeyCode.LeftControl))
             {
-                Shooting.UseShot(myself, bullet, CurveBullet);
-                StartTimer();
+                usingMainShot = !usingMainShot;
             }
         }
         else
@@ -53,6 +65,10 @@ public class PlayerActions : MonoBehaviour, ITimer
             Timer -= Time.deltaTime;
         }
 
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            gameManager.SwitchState(GameManager.gameState.BattleGamemode);
+        }
     }
     void FixedUpdate()
     {
