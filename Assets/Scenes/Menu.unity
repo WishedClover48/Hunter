@@ -234,11 +234,10 @@ MonoBehaviour:
   SpellList: {fileID: 88835188}
   SpellUI: {fileID: 7804258775783815256, guid: 2c6439da90f2bc440b4ceb2478aa2f4d, type: 3}
   createSpell:
-    name: Arcane Kick
-    description: Imbue your foot with arcane power in order to triple the damage
-      of your next kick
-    manaCost: 10
-    damage: 60
+    name: 
+    description: 
+    manaCost: 0
+    damage: 0
 --- !u!4 &138789549
 Transform:
   m_ObjectHideFlags: 0
@@ -640,7 +639,6 @@ RectTransform:
   - {fileID: 1698973219}
   - {fileID: 1620063345}
   - {fileID: 1003658530}
-  - {fileID: 2117925219}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1618,155 +1616,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1928736807}
   m_CullTransparentMesh: 1
---- !u!1001 &2117925218
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 700929006}
-    m_Modifications:
-    - target: {fileID: 1505256661085373343, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_text
-      value: Name
-      objectReference: {fileID: 0}
-    - target: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 347.9253
-      objectReference: {fileID: 0}
-    - target: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 256.9828
-      objectReference: {fileID: 0}
-    - target: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 597
-      objectReference: {fileID: 0}
-    - target: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 192
-      objectReference: {fileID: 0}
-    - target: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978358005208835168, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_text
-      value: Description
-      objectReference: {fileID: 0}
-    - target: {fileID: 5907944213753514352, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_text
-      value: Base damage
-      objectReference: {fileID: 0}
-    - target: {fileID: 5907944213753514352, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 25.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7804258775783815256, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_Name
-      value: SpellUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 7975179587016288374, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-        type: 3}
-      propertyPath: m_text
-      value: Mana cost
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2c6439da90f2bc440b4ceb2478aa2f4d, type: 3}
---- !u!224 &2117925219 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3875142469975725442, guid: 2c6439da90f2bc440b4ceb2478aa2f4d,
-    type: 3}
-  m_PrefabInstance: {fileID: 2117925218}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
