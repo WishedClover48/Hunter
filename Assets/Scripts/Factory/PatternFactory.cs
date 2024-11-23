@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PatternFactory
+public class PatternFactory : MonoBehaviour 
 {
     public enum BulletType
     {
         StraightBullet,
         CurveBullet
+    }
+    private void OnEnable()
+    {
+        ServiceLocator.Instance.RegisterService(this);
     }
     public IShot CreatePattern(BulletType type)
     {

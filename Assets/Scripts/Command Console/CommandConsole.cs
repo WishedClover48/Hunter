@@ -31,9 +31,8 @@ public class CommandConsole : MonoBehaviour
 
     private void ParseAndExecuteCommand(string input)
     {
-        string[] args = input.Split(' '); // Split input by spaces
+        string[] args = input.Split(' '); // Split inputs by spaces
         if (args.Length == 0) return;
-
         string command = args[0].ToLower(); // Command name
         switch (command)
         {

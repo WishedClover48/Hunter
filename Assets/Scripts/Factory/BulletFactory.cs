@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletFactory
+public class BulletFactory: MonoBehaviour
 {
+    [SerializeField] GameObject bullet;
     public enum BulletType
     {
         StraightBullet,
         CurveBullet
+    }
+    private void OnEnable()
+    {
+        ServiceLocator.Instance.RegisterService(this);
     }
     public IShot CreateBullet(BulletType type)
     {

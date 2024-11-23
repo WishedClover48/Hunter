@@ -25,25 +25,27 @@ public class PlayerActions : MonoBehaviour, ITimer
     private GameManager gameManager;
     Vector3 wantedPosition;
     Quaternion wantedRotation;
-    ShootingPattern Shooting = new ShootingPattern();
-    BulletFactory bulletFactory = new BulletFactory();
+    ShootingPattern Shooting;
+    BulletFactory bulletFactory;
     IShot mainShotMode;
     IShot backupShotMode;
     IShot auxShotMode;
 
     private void Start()
     {
+        bulletFactory = ServiceLocator.Instance.GetService<BulletFactory>();
+        Shooting = ServiceLocator.Instance.GetService<ShootingPattern>();
         mainShotMode = bulletFactory.CreateBullet(BulletFactory.BulletType.StraightBullet);
         backupShotMode = bulletFactory.CreateBullet(BulletFactory.BulletType.CurveBullet);
         gameManager = GameManager.Instance;
     }
     private void Update()
     {
-        if(timer < 0) 
+        if(timer < 0)
         { 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Shooting.UseShot(transform, bullet, mainShotMode);
+                ServiceLocator.Instance.GetService<ShootingPattern>().UseShot(transform, bullet, mainShotMode);
                 StartTimer();
             }
             else if (Input.GetKeyDown(KeyCode.LeftControl))
