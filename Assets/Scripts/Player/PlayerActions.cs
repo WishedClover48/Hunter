@@ -73,7 +73,7 @@ public class PlayerActions : MonoBehaviour, ITimer
         { 
             wantedRotation = transform.rotation * Quaternion.Euler(Vector3.up * Input.GetAxisRaw("Horizontal") * rotationSpeed * Time.deltaTime );
         }
-        else if(timer < 0 && gameManager.GetState() == GameManager.gameState.MainWorld)
+        else if(timer < 0)
         {
             wantedRotation = transform.rotation * Quaternion.Euler(Vector3.up * Input.GetAxisRaw("Horizontal") * (rotationSpeed/2) * Time.deltaTime);
         }

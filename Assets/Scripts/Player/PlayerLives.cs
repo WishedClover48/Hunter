@@ -7,9 +7,8 @@ public class PlayerLives : MonoBehaviour, IDamageable
 {
     [SerializeField] public int maxHealth;
     [SerializeField] public Image[] numOfTanks;
-    public Sprite tank;
 
-    int currentHealth;
+    private int currentHealth;
     void Start()
     {
         currentHealth = maxHealth;
@@ -23,7 +22,13 @@ public class PlayerLives : MonoBehaviour, IDamageable
         {
             GameManager.Instance.PlayerKilled();
         }
-
     }
-
+    public void RefreshHealth()
+    {
+        currentHealth = maxHealth;
+        for (int i = 0; i < numOfTanks.Length; i++)
+        {
+            numOfTanks[i].enabled = true;
+        }
+    }
 }
