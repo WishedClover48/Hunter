@@ -5,10 +5,10 @@ using UnityEngine;
 public class CurveBullet : IShot
 {
     private float bulletSpeed = 50;
-    public void Shooting(GameObject shooter, Rigidbody bullet)
+    public void Shooting(Transform shooter, Rigidbody bullet)
     {
-        Rigidbody bulletClone = GameObject.Instantiate(bullet, shooter.transform.position + (shooter.transform.rotation * new Vector3(0, 2, 3)), shooter.transform.rotation);
+        Rigidbody bulletClone = GameObject.Instantiate(bullet, shooter.position + (shooter.rotation * new Vector3(0, 2, 3)), shooter.rotation);
         bulletClone.useGravity = true;
-        bulletClone.velocity = new Vector3(0, 15, 0) + (shooter.transform.forward / 8) * bulletSpeed;
+        bulletClone.velocity = new Vector3(0, 15, 0) + (shooter.forward / 8) * bulletSpeed;
     }
 }

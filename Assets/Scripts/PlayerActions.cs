@@ -9,9 +9,7 @@ public class PlayerActions : MonoBehaviour, ITimer
     [SerializeField] private float rotationSpeed;
     [SerializeField] private Rigidbody bullet;
     [SerializeField] public float TargetTime;
-    [SerializeField] public GameObject myself;
-    private Rigidbody playerRB;
-    private bool usingMainShot;
+    [SerializeField] private Rigidbody playerRB;
     public float Timer
     {
         get
@@ -28,30 +26,28 @@ public class PlayerActions : MonoBehaviour, ITimer
     Vector3 wantedPosition;
     Quaternion wantedRotation;
     ShootingPattern Shooting = new ShootingPattern();
+    BulletFactory bulletFactory = new BulletFactory();
     IShot mainShotMode;
     IShot backupShotMode;
     IShot auxShotMode;
 
     private void Start()
     {
-        mainShotMode = new StraightBullet();
-        backupShotMode = new CurveBullet();
-        usingMainShot = true;
+        mainShotMode = bulletFactory.CreateBullet(BulletFactory.BulletType.StraightBullet);
+        backupShotMode = bulletFactory.CreateBullet(BulletFactory.BulletType.CurveBullet);
         gameManager = GameManager.Instance;
-        playerRB = myself.GetComponent<Rigidbody>();
     }
     private void Update()
     {
         if(timer < 0) 
         { 
-            if (Input.GetKeyDown(KeyCode.Space) && gameManager.GetState() == GameManager.gameState.MainWorld)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                Shooting.UseShot(myself, bullet, mainShotMode);
+                Shooting.UseShot(transform, bullet, mainShotMode);
                 StartTimer();
             }
             else if (Input.GetKeyDown(KeyCode.LeftControl))
             {
-                usingMainShot = !usingMainShot;
                 auxShotMode = mainShotMode;
                 mainShotMode = backupShotMode;
                 backupShotMode = auxShotMode;
@@ -62,35 +58,18 @@ public class PlayerActions : MonoBehaviour, ITimer
         {
             Timer -= Time.deltaTime;
         }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            gameManager.SwitchState(GameManager.gameState.BattleGamemode);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            gameManager.SwitchState(GameManager.gameState.MainWorld);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            gameManager.SwitchState(GameManager.gameState.MenuPrincipal);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            gameManager.SwitchState(GameManager.gameState.Pause);
-        }
     }
     void FixedUpdate()
     {
         //Controls the movement
-        if (timer < 0 && gameManager.GetState() == GameManager.gameState.MainWorld) 
+        if (timer < 0) 
         { 
             wantedPosition = transform.position + transform.forward * Input.GetAxisRaw("Vertical") * movementSpeed * Time.deltaTime;
             playerRB.MovePosition(wantedPosition);
         }
 
         //Controls the rotation
-        if (Input.GetAxisRaw("Vertical") <= 0.4 && Input.GetAxisRaw("Vertical") >= -0.4 && timer < 0 && gameManager.GetState() == GameManager.gameState.MainWorld) 
+        if (Input.GetAxisRaw("Vertical") <= 0.4 && Input.GetAxisRaw("Vertical") >= -0.4 && timer < 0) 
         { 
             wantedRotation = transform.rotation * Quaternion.Euler(Vector3.up * Input.GetAxisRaw("Horizontal") * rotationSpeed * Time.deltaTime );
         }

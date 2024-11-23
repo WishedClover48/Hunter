@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IShot
 {
-    public void Shooting(GameObject shooter, Rigidbody bullet);
+    public void Shooting(Transform shooter, Rigidbody bullet);
 }
