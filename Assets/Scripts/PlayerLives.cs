@@ -10,8 +10,6 @@ public class PlayerLives : MonoBehaviour, IDamageable
     public Sprite tank;
 
     int currentHealth;
-
-    // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
@@ -23,7 +21,7 @@ public class PlayerLives : MonoBehaviour, IDamageable
         numOfTanks[currentHealth].enabled = false;
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            GameManager.Instance.PlayerKilled();
         }
 
     }
