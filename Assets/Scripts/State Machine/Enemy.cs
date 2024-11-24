@@ -47,5 +47,11 @@ public class Enemy : MonoBehaviour
             SetState(new Wander());
         }
     }
-
+    private void OnDestroy()
+    {
+        if (gameObject.scene.isLoaded)
+        {
+            GameManager.Instance?.EnemyKilled();
+        }
+    }
 }

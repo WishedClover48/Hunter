@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Windows.Input;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -57,9 +58,19 @@ public class CommandConsole : MonoBehaviour
                 AppendToOutput("Player lives refilled.");
                 break;
             case "enemy":
-                ICommand spawnEnemy = new SpawnEnemy(enemy, player);
-                spawnEnemy.Execute();
+                ICommand spawnEnemyCommand = new SpawnEnemy(enemy, player);
+                spawnEnemyCommand.Execute();
                 AppendToOutput("Enemy spawned.");
+                break;
+            case "win":
+                ICommand winCommand = new WinCommand();
+                winCommand.Execute();
+                AppendToOutput("Game won");
+                break;
+            case "lose":
+                ICommand loseCommand = new LoseCommand(player);
+                loseCommand.Execute();
+                AppendToOutput("Game lost");
                 break;
             case "help":
                 DisplayHelp();
@@ -74,9 +85,11 @@ public class CommandConsole : MonoBehaviour
         string helpText =
             "**Available Commands**:\n" +
             "- **move <direction> <distance>**: Moves the player in a specified direction by a given distance.\n" +
-            "- **lives**: Refills player lives back to 3\n" +
-            "- **enemy**: Spawns an enemy in front of the player\n" +
-            "- **help**: Displays this list of available commands.";
+            "- **lives**: Refills player lives back to 3.\n" +
+            "- **enemy**: Spawns an enemy in front of the player.\n" +
+            "- **win**: Takes the player to the win screen.\n" +
+            "- **lose**: Takes the player to the lose screen.\n" +
+            "- **help**: Displays this list of available commands.\n";
         AppendToOutput(helpText);
     }
 
@@ -112,7 +125,7 @@ public class CommandConsole : MonoBehaviour
             }
             else
             {
-                GameManager.Instance.SwitchState(GameManager.gameState.MainWorld);
+                GameManager.Instance.SwitchState(GameManager.gameState.Unpause);
             }
         }
     }

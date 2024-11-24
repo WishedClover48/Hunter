@@ -20,7 +20,7 @@ public class PlayerLives : MonoBehaviour, IDamageable
         numOfTanks[currentHealth].enabled = false;
         if (currentHealth <= 0)
         {
-            GameManager.Instance.PlayerKilled();
+            Kill();
         }
     }
     public void RefreshHealth()
@@ -30,5 +30,11 @@ public class PlayerLives : MonoBehaviour, IDamageable
         {
             numOfTanks[i].enabled = true;
         }
+    }
+
+    public void Kill()
+    {
+        currentHealth = 0;
+        GameManager.Instance.PlayerKilled();
     }
 }

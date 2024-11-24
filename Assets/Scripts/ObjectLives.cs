@@ -19,9 +19,6 @@ public class ObjectLives : MonoBehaviour, IDamageable
             currentHealth -= damage;
             if (currentHealth <= 0)
             {
-                if (gameObject.tag == "Enemy")
-                GameManager.Instance?.EnemyKilled();
-
                 Destroy(gameObject);
             }
 

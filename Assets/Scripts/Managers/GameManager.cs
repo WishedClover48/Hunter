@@ -35,15 +35,16 @@ public class GameManager : MonoBehaviour
     #endregion
 
     private int enemyCount = 0;
-    public enum gameState { MainWorld, Pause}
+    public enum gameState { Unpause, Pause}
 
-    private gameState state = gameState.MainWorld;
+    private gameState state = gameState.Unpause;
 
     public void EnemyKilled()
     {
         enemyCount--;
-        if (enemyCount == 0) 
+        if (enemyCount <= 0) 
         {
+            SwitchState(gameState.Unpause);
             MySceneManager.Instance.ChangeScene("Victory");
         }
     }
@@ -54,8 +55,10 @@ public class GameManager : MonoBehaviour
     }
     public void PlayerKilled()
     {
+        enemyCount = 0;
         Debug.Log("The player was killed");
-       MySceneManager.Instance.ChangeScene("Defeat");
+        SwitchState(gameState.Unpause);
+        MySceneManager.Instance.ChangeScene("Defeat");
     }
     public gameState GetState()
     {
@@ -68,7 +71,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0f;
         }
-        else if(newState == gameState.MainWorld)
+        else if(newState == gameState.Unpause)
         {
             Time.timeScale = 1f;
         }
