@@ -412,7 +412,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 859471877}
-  - component: {fileID: 859471878}
   m_Layer: 0
   m_Name: BulletFactory
   m_TagString: Untagged
@@ -435,19 +434,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &859471878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 859471876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d1bafdd87a2f0044ac6f496aeaa3145, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 7089262932871672291, guid: b8df17e67cf4a7d458523abdcc82c7ce, type: 3}
 --- !u!1 &977238816
 GameObject:
   m_ObjectHideFlags: 0

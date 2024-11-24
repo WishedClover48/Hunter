@@ -26,6 +26,9 @@ public class Bullet : MonoBehaviour, IDamager
 
     private void OnDestroy()
     {
-        Instantiate(smoke, transform.position, Quaternion.Euler(transform.rotation*transform.forward));
+        if (gameObject.scene.isLoaded)
+        {
+            Instantiate(smoke, transform.position, Quaternion.Euler(transform.rotation*transform.forward));
+        }
     }
 }

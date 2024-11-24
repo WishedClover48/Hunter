@@ -6,7 +6,7 @@ public class Wander : IEnemyState, ITimer
 {
     private float targetTime = 2.5f;
     private float timer = 2.5f;
-    private int speed = 40;
+    private int speed = 5;
     Transform transform;
     Rigidbody rb;
     Vector3 wantedPosition;
@@ -22,7 +22,11 @@ public class Wander : IEnemyState, ITimer
 
     }
 
-    public void Update(Enemy enemy)
+    public void Update(Enemy enemy) 
+    {
+        timer -= Time.deltaTime;
+    }
+    public void FixedUpdate(Enemy enemy)
     {
         if (timer < 0)
         {
@@ -34,7 +38,7 @@ public class Wander : IEnemyState, ITimer
         {
             wantedPosition = transform.position + transform.forward * Time.deltaTime * speed;
             rb.MovePosition(wantedPosition);
-            timer -= Time.deltaTime;
+            
         }
     }
     public void StartTimer()

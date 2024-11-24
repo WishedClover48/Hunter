@@ -132,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1169043}
   - component: {fileID: 1169042}
+  - component: {fileID: 1169045}
   - component: {fileID: 1169044}
   m_Layer: 0
   m_Name: BulletFactory
@@ -152,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1bafdd87a2f0044ac6f496aeaa3145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 7089262932871672291, guid: b8df17e67cf4a7d458523abdcc82c7ce, type: 3}
+  bullet: {fileID: -5940730853299298612, guid: b8df17e67cf4a7d458523abdcc82c7ce, type: 3}
 --- !u!4 &1169043
 Transform:
   m_ObjectHideFlags: 0
@@ -178,6 +179,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee20d49d0badaf646a9d5ed2715bfde7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1169045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a74bb00f4280ca248980f9d5c9a85ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &13023507

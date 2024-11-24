@@ -4,26 +4,15 @@ using UnityEngine;
 
 public class BulletFactory: MonoBehaviour
 {
-    [SerializeField] GameObject bullet;
-    public enum BulletType
-    {
-        StraightBullet,
-        CurveBullet
-    }
+    [SerializeField] Rigidbody bullet;
     private void OnEnable()
     {
         ServiceLocator.Instance.RegisterService(this);
     }
-    public IShot CreateBullet(BulletType type)
+    public Rigidbody CreateBullet()
     {
-        switch (type)
-        {
-            case BulletType.StraightBullet:
-                return new StraightBullet();
-            case BulletType.CurveBullet:
-                return new CurveBullet();
-            default:
-                throw new System.ArgumentException("Invalid bullet type");
-        }
+        Rigidbody newBullet = Instantiate(bullet);
+        return newBullet;
+        
     }
 }

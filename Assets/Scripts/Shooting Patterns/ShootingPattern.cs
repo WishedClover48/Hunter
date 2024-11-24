@@ -8,8 +8,8 @@ public class ShootingPattern: MonoBehaviour
     {
         ServiceLocator.Instance.RegisterService(this);
     }
-    public void UseShot( Transform shooter, Rigidbody bullet, IShot strategy)
+    public void UseShot( Transform shooter, IShot strategy)
     {
-        strategy.Shooting(shooter, bullet);
+        strategy.Shooting(shooter);
     }
 }

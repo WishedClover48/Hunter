@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     private int enemyCount = 0;
-    public enum gameState { MainWorld, MenuPrincipal, Pause, BattleGamemode}
+    public enum gameState { MainWorld, Pause}
 
     private gameState state = gameState.MainWorld;
 
@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
     }
     public void PlayerKilled()
     {
+        Debug.Log("The player was killed");
        MySceneManager.Instance.ChangeScene("Defeat");
     }
     public gameState GetState()

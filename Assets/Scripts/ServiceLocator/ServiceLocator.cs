@@ -31,6 +31,7 @@ public class ServiceLocator
         {
             _services.Add(type, service);
         }
+        Debug.Log($"Service of type {service} registered.");
     }
 
     // Get a service from the Service Locator

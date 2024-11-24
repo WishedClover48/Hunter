@@ -7,7 +7,6 @@ public class PlayerActions : MonoBehaviour, ITimer
 {
     [SerializeField] private float movementSpeed;
     [SerializeField] private float rotationSpeed;
-    [SerializeField] private Rigidbody bullet;
     [SerializeField] public float TargetTime;
     [SerializeField] private Rigidbody playerRB;
     public float Timer
@@ -25,18 +24,16 @@ public class PlayerActions : MonoBehaviour, ITimer
     private GameManager gameManager;
     Vector3 wantedPosition;
     Quaternion wantedRotation;
-    ShootingPattern Shooting;
-    BulletFactory bulletFactory;
+    PatternFactory patternFactory;
     IShot mainShotMode;
     IShot backupShotMode;
     IShot auxShotMode;
 
     private void Start()
     {
-        bulletFactory = ServiceLocator.Instance.GetService<BulletFactory>();
-        Shooting = ServiceLocator.Instance.GetService<ShootingPattern>();
-        mainShotMode = bulletFactory.CreateBullet(BulletFactory.BulletType.StraightBullet);
-        backupShotMode = bulletFactory.CreateBullet(BulletFactory.BulletType.CurveBullet);
+        patternFactory = ServiceLocator.Instance.GetService<PatternFactory>();
+        mainShotMode = patternFactory.CreatePattern(PatternFactory.BulletType.StraightBullet);
+        backupShotMode = patternFactory.CreatePattern(PatternFactory.BulletType.CurveBullet);
         gameManager = GameManager.Instance;
     }
     private void Update()
@@ -45,7 +42,7 @@ public class PlayerActions : MonoBehaviour, ITimer
         { 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                ServiceLocator.Instance.GetService<ShootingPattern>().UseShot(transform, bullet, mainShotMode);
+                ServiceLocator.Instance.GetService<ShootingPattern>().UseShot(transform, mainShotMode);
                 StartTimer();
             }
             else if (Input.GetKeyDown(KeyCode.LeftControl))

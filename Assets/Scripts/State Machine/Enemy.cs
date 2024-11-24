@@ -6,7 +6,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private IEnemyState _currentState;
-    [SerializeField] public Rigidbody bullet;
     void Start()
     {
         SetState(new Wander());
@@ -16,7 +15,10 @@ public class Enemy : MonoBehaviour
     {
         _currentState?.Update(this);
     }
-
+    private void FixedUpdate()
+    {
+        _currentState.FixedUpdate(this);
+    }
     public void SetState(IEnemyState newState)
     {
         if (newState == null)
@@ -45,8 +47,5 @@ public class Enemy : MonoBehaviour
             SetState(new Wander());
         }
     }
-    private void OnDestroy()
-    {
-        GameManager.Instance?.EnemyKilled();
-    }
+
 }
