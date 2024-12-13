@@ -5,6 +5,11 @@ using UnityEngine;
 public class CurveBullet : IShot
 {
     private float bulletSpeed = 80;
+    private BulletPool bulletPool;
+    public void Initialize()
+    {
+        bulletPool = ServiceLocator.Instance.GetService<BulletPool>();
+    }
     public void Shooting(Transform shooter)
     {
         Rigidbody bulletClone = ServiceLocator.Instance.GetService<BulletFactory>().CreateBullet();

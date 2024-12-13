@@ -33,7 +33,9 @@ public class PlayerActions : MonoBehaviour, ITimer
     {
         patternFactory = ServiceLocator.Instance.GetService<PatternFactory>();
         mainShotMode = patternFactory.CreatePattern(PatternFactory.BulletType.StraightBullet);
+        mainShotMode.Initialize();
         backupShotMode = patternFactory.CreatePattern(PatternFactory.BulletType.CurveBullet);
+        backupShotMode.Initialize();
         gameManager = GameManager.Instance;
     }
     private void Update()
