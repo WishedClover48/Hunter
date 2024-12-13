@@ -5,19 +5,30 @@ using UnityEngine.UI;
 
 public class PlayerLives : MonoBehaviour, IDamageable
 {
-    [SerializeField] public int maxHealth;
     [SerializeField] public Image[] numOfTanks;
 
-    private int currentHealth;
-    void Start()
+    private ObjectLives _wrappedObject;
+    public void Start()
     {
-        currentHealth = maxHealth;
+        _wrappedObject = gameObject.AddComponent<ObjectLives>();
+        _wrappedObject.FullyHeal();
+        if (numOfTanks.Length != _wrappedObject.GetMaxHealth())
+        {
+            Debug.LogWarning("Number of tank icons does not match max health.");
+        }
+        RefreshHealth();
     }
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        numOfTanks[currentHealth].enabled = false;
+        _wrappedObject?.TakeDamage(damage);
+
+        int currentHealth = _wrappedObject.GetCurrentHealth();
+
+        if (currentHealth >= 0 && currentHealth < numOfTanks.Length)
+        {
+            numOfTanks[currentHealth].enabled = false;
+        }
         if (currentHealth <= 0)
         {
             Kill();
@@ -25,7 +36,9 @@ public class PlayerLives : MonoBehaviour, IDamageable
     }
     public void RefreshHealth()
     {
-        currentHealth = maxHealth;
+        int maxHealth = _wrappedObject.GetMaxHealth();
+
+        _wrappedObject.FullyHeal();
         for (int i = 0; i < numOfTanks.Length; i++)
         {
             numOfTanks[i].enabled = true;
@@ -34,7 +47,6 @@ public class PlayerLives : MonoBehaviour, IDamageable
 
     public void Kill()
     {
-        currentHealth = 0;
         GameManager.Instance.PlayerKilled();
     }
 }

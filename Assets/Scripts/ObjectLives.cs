@@ -1,27 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectLives : MonoBehaviour, IDamageable
 {
-    [SerializeField] public int maxHealth;
+    [SerializeField] private int maxHealth = 3;
 
     int currentHealth;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
+        FullyHeal();
+    }
+
+    public void FullyHeal() 
+    { 
         currentHealth = maxHealth;
     }
 
+    public int GetCurrentHealth() => currentHealth;
+
+    public int GetMaxHealth() => maxHealth;
+
     public void TakeDamage(int damage)
     {
-            currentHealth -= damage;
-            if (currentHealth <= 0)
+        currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
+        Debug.Log($"{gameObject.name} took {damage} damage. Current Health: {currentHealth}/{maxHealth}");
+        if (currentHealth <= 0)
             {
-                Destroy(gameObject);
+            Debug.Log($"{gameObject.name} is destroyed.");
+            Destroy(gameObject);
             }
-
     }
-
 }
