@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool<T> where T : MonoBehaviour
+public class ObjectPool<T> where T : Component
 {
     private readonly Queue<T> _pool = new Queue<T>();
-    private readonly T _prefab;
-    private readonly Transform _parentTransform;
+    private readonly IAbstractFactory<T> _factory;
 
-    public ObjectPool(T prefab, int initialSize, Transform parentTransform = null)
+    public ObjectPool(IAbstractFactory<T> factory, int initialSize)
     {
-        _prefab = prefab;
-        _parentTransform = parentTransform;
+
+        _factory = factory;
 
         for (int i = 0; i < initialSize; i++)
         {
             T obj = CreateNewObject();
             ReturnToPool(obj);
         }
+        ServiceLocator.Instance.RegisterService(this);
     }
 
     public T GetFromPool()
@@ -42,7 +42,7 @@ public class ObjectPool<T> where T : MonoBehaviour
 
     private T CreateNewObject()
     {
-        T newObj = Object.Instantiate(_prefab, _parentTransform);
+        T newObj = _factory.Create();
         newObj.gameObject.SetActive(false);
         return newObj;
     }

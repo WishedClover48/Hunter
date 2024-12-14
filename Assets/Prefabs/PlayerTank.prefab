@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 2529654124240280188}
   - component: {fileID: 2287876608815776550}
   - component: {fileID: 3295774754600658732}
+  - component: {fileID: -3085351287089331102}
   m_Layer: 0
   m_Name: PlayerTank
   m_TagString: Player
@@ -156,7 +157,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 20
   rotationSpeed: 40
-  bullet: {fileID: -5940730853299298612, guid: b8df17e67cf4a7d458523abdcc82c7ce, type: 3}
   TargetTime: 1
   playerRB: {fileID: 2287876608815776550}
 --- !u!54 &2287876608815776550
@@ -198,12 +198,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 076773d9b75fde1429c24edb5a27bc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
   numOfTanks:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  tank: {fileID: 21300000, guid: 48ee561bf73afcc4db210a15c28a17c5, type: 3}
+--- !u!114 &-3085351287089331102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6373082909021629715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598f1b99cae30a048a0f7de9781b19ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8122965121943801013
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,12 +345,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &8196585668697823440
 GameObject:
   m_ObjectHideFlags: 0

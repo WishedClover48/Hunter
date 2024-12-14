@@ -24,18 +24,21 @@ public class PlayerActions : MonoBehaviour, ITimer
     private GameManager gameManager;
     Vector3 wantedPosition;
     Quaternion wantedRotation;
-    PatternFactory patternFactory;
+    IAbstractFactory<IShot> patternFactory;
     IShot mainShotMode;
     IShot backupShotMode;
     IShot auxShotMode;
 
     private void Start()
     {
-        patternFactory = ServiceLocator.Instance.GetService<PatternFactory>();
-        mainShotMode = patternFactory.CreatePattern(PatternFactory.BulletType.StraightBullet);
+        patternFactory = ServiceLocator.Instance.GetService<StraightPatternFactory>();
+        mainShotMode = patternFactory.Create();
         mainShotMode.Initialize();
-        backupShotMode = patternFactory.CreatePattern(PatternFactory.BulletType.CurveBullet);
+
+        patternFactory = ServiceLocator.Instance.GetService<CurvePatternFactory>();
+        backupShotMode = patternFactory.Create();
         backupShotMode.Initialize();
+
         gameManager = GameManager.Instance;
     }
     private void Update()

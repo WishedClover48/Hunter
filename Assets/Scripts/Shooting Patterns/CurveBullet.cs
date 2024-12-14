@@ -5,14 +5,12 @@ using UnityEngine;
 public class CurveBullet : IShot
 {
     private float bulletSpeed = 80;
-    private BulletPool bulletPool;
     public void Initialize()
     {
-        bulletPool = ServiceLocator.Instance.GetService<BulletPool>();
     }
     public void Shooting(Transform shooter)
     {
-        Rigidbody bulletClone = ServiceLocator.Instance.GetService<BulletFactory>().CreateBullet();
+        Rigidbody bulletClone = ServiceLocator.Instance.GetService<ObjectPool<Rigidbody>>().GetFromPool();
         bulletClone.transform.position = shooter.position + (shooter.rotation * new Vector3(0, 2, 3));
         bulletClone.transform.rotation = shooter.rotation;
         bulletClone.useGravity = true;

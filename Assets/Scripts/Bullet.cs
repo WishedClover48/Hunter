@@ -17,7 +17,8 @@ public class Bullet : MonoBehaviour, IDamager
         {
             DealDamage(damageable);
         }
-        Destroy(gameObject);
+        Disappear();
+        //Destroy(gameObject);
     }
     public void DealDamage(IDamageable damageable)
     {
@@ -30,5 +31,13 @@ public class Bullet : MonoBehaviour, IDamager
         {
             Instantiate(smoke, transform.position, Quaternion.Euler(transform.rotation*transform.forward));
         }
+    }
+    private void Disappear()
+    {
+        if (gameObject.scene.isLoaded)
+        {
+            Instantiate(smoke, transform.position, Quaternion.Euler(transform.rotation * transform.forward));
+        }
+        ServiceLocator.Instance.GetService<ObjectPool<Rigidbody>>().ReturnToPool(Rigidbody);
     }
 }

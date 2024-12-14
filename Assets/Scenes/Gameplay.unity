@@ -132,8 +132,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1169043}
   - component: {fileID: 1169042}
-  - component: {fileID: 1169045}
   - component: {fileID: 1169044}
+  - component: {fileID: 1169046}
+  - component: {fileID: 1169045}
   m_Layer: 0
   m_Name: BulletFactory
   m_TagString: Untagged
@@ -182,6 +183,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1169045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fad6f54842f67c499426513f9dea9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1169046
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3414,53 +3427,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1519462560}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1526158194
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1526158196}
-  - component: {fileID: 1526158195}
-  m_Layer: 0
-  m_Name: BulletPool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1526158195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1526158194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 598f1b99cae30a048a0f7de9781b19ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 6388932857745862352, guid: b8df17e67cf4a7d458523abdcc82c7ce,
-    type: 3}
-  initialPoolSize: 10
---- !u!4 &1526158196
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1526158194}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 540.5, y: 304, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1548775732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5433,4 +5399,3 @@ SceneRoots:
   - {fileID: 1599668861}
   - {fileID: 13023509}
   - {fileID: 1169043}
-  - {fileID: 1526158196}

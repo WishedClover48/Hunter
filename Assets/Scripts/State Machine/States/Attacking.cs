@@ -35,7 +35,7 @@ public class Attacking : IEnemyState , ITimer
         {
             ServiceLocator.Instance.GetService<ShootingPattern>().UseShot(
                 enemy.transform,
-                ServiceLocator.Instance.GetService<PatternFactory>().CreatePattern(PatternFactory.BulletType.StraightBullet));
+                ServiceLocator.Instance.GetService<StraightPatternFactory>().Create());
             StartTimer();
         }
         else
