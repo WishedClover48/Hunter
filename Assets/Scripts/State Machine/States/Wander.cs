@@ -11,22 +11,22 @@ public class Wander : IEnemyState, ITimer
     Rigidbody rb;
     Vector3 wantedPosition;
     Quaternion wantedRotation;
-    public void Enter(Enemy enemy)
+    public void Enter(EnemyStateMachine enemy)
     {
         transform = enemy.transform;
         rb = enemy.GetComponent<Rigidbody>();
     }
 
-    public void Exit(Enemy enemy)
+    public void Exit(EnemyStateMachine enemy)
     {
 
     }
 
-    public void Update(Enemy enemy) 
+    public void Update(EnemyStateMachine enemy) 
     {
         timer -= Time.deltaTime;
     }
-    public void FixedUpdate(Enemy enemy)
+    public void FixedUpdate(EnemyStateMachine enemy)
     {
         if (timer < 0)
         {

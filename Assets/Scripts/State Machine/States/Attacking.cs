@@ -15,21 +15,21 @@ public class Attacking : IEnemyState , ITimer
         target = player; 
     }
 
-    public void Enter(Enemy enemy)
+    public void Enter(EnemyStateMachine enemy)
     {
         rb = enemy.GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
     }
 
-    public void Exit(Enemy enemy)
+    public void Exit(EnemyStateMachine enemy)
     {
         rb.constraints -= RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
     }
-    public void Update(Enemy enemy)
+    public void Update(EnemyStateMachine enemy)
     {
         timer -= Time.deltaTime;
     }
-    public void FixedUpdate(Enemy enemy)
+    public void FixedUpdate(EnemyStateMachine enemy)
     {
         if (timer < 0)
         {

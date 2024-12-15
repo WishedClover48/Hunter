@@ -49,6 +49,7 @@ public class PlayerActions : MonoBehaviour, ITimer
             {
                 ServiceLocator.Instance.GetService<ShootingPattern>().UseShot(transform, mainShotMode);
                 StartTimer();
+                Debug.Log(GameManager.Instance?.enemyList.Count);
             }
             else if (Input.GetKeyDown(KeyCode.LeftControl))
             {

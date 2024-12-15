@@ -5,9 +5,9 @@ using UnityEngine;
 
 public interface IEnemyState
 {
-    void Enter(Enemy enemy);
-    void Update(Enemy enemy);
-    void FixedUpdate(Enemy enemy);
+    void Enter(EnemyStateMachine enemy);
+    void Update(EnemyStateMachine enemy);
+    void FixedUpdate(EnemyStateMachine enemy);
 
-    void Exit(Enemy enemy);
+    void Exit(EnemyStateMachine enemy);
 }

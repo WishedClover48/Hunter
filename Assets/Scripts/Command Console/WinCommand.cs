@@ -5,8 +5,7 @@ internal class WinCommand : ICommand
 {
     public void Execute()
     {
-        GameObject[] enemies =  GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies) 
+        foreach (GameObject enemy in GameManager.Instance.enemyList) 
         {
             GameObject.Destroy(enemy);
         }

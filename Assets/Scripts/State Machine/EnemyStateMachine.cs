@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyStateMachine : MonoBehaviour
 {
-    [SerializeField] private IEnemyState _currentState;
+    private IEnemyState _currentState;
     void Start()
     {
         SetState(new Wander());
-        GameManager.Instance.EnemySpawned();
+        GameManager.Instance.EnemySpawned(gameObject);
     }
     void Update()
     {
@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
     {
         if (gameObject.scene.isLoaded)
         {
-            GameManager.Instance?.EnemyKilled();
+            GameManager.Instance?.EnemyKilled(gameObject);
         }
     }
 }

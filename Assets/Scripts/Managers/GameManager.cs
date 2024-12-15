@@ -34,28 +34,27 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    private int enemyCount = 0;
     public enum gameState { Unpause, Pause}
 
     private gameState state = gameState.Unpause;
 
-    public void EnemyKilled()
+    public List<GameObject> enemyList = new List<GameObject>();
+    public void EnemySpawned(GameObject Enemy)
     {
-        enemyCount--;
-        if (enemyCount <= 0) 
+        enemyList.Add(Enemy);
+    }
+    public void EnemyKilled(GameObject Enemy)
+    {
+        enemyList.Remove(Enemy);
+        if (enemyList.Count <= 0) 
         {
             SwitchState(gameState.Unpause);
             MySceneManager.Instance.ChangeScene("Victory");
         }
     }
-
-    public void EnemySpawned()
-    {
-        enemyCount++;
-    }
     public void PlayerKilled()
     {
-        enemyCount = 0;
+        enemyList.Clear();
         Debug.Log("The player was killed");
         SwitchState(gameState.Unpause);
         MySceneManager.Instance.ChangeScene("Defeat");

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour, IDamager
 {
     [SerializeField] public Rigidbody thisRigidbody;
-    [SerializeField] private BulletFlyweight_SO sharedData; 
+    [SerializeField] private BulletFlyweight_SO sharedData;
 
     private void OnCollisionEnter(Collision other)
     {
