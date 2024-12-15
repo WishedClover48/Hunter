@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObjectPool<T> where T : Component
@@ -40,10 +41,16 @@ public class ObjectPool<T> where T : Component
         _pool.Enqueue(obj);
     }
 
+    public void EmptyPool()
+    {
+        _pool.Clear();
+    }
+
     private T CreateNewObject()
     {
         T newObj = _factory.Create();
         newObj.gameObject.SetActive(false);
         return newObj;
     }
+
 }

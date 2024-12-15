@@ -9,4 +9,10 @@ public class BulletPoolInitiator : MonoBehaviour
     {
         bulletPool = new ObjectPool<Rigidbody>(ServiceLocator.Instance.GetService<BulletFactory>(), 10);
     }
+
+    private void OnDestroy()
+    {
+        bulletPool?.EmptyPool();
+        ServiceLocator.Instance.UnregisterService<ObjectPool<Rigidbody>>();
+    }
 }
