@@ -9,7 +9,6 @@ public class EnemyStateMachine : MonoBehaviour
     void Start()
     {
         SetState(new Wander());
-        GameManager.Instance.EnemySpawned(gameObject);
     }
     void Update()
     {
@@ -45,13 +44,6 @@ public class EnemyStateMachine : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             SetState(new Wander());
-        }
-    }
-    private void OnDestroy()
-    {
-        if (gameObject.scene.isLoaded)
-        {
-            GameManager.Instance?.EnemyKilled(gameObject);
         }
     }
 }

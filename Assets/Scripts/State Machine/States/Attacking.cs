@@ -7,7 +7,6 @@ public class Attacking : IEnemyState , ITimer
     private float targetTime = 3f;
     private float timer = 1.5f;
     private Rigidbody rb;
-    IShot mainShotMode;
     private GameObject target;
 
     public Attacking(GameObject player)
